@@ -35,5 +35,5 @@ func (s *FiveMServer) StartServer() error {
 }
 
 func (s *FiveMServer) CreateRoutes() {
-	s.Router.Get("/", health.Handler)
+	s.Router.Get("/", health.GetHealthHandler)
 }

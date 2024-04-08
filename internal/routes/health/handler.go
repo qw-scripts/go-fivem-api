@@ -6,7 +6,7 @@ import (
 	"github.com/masonschafercodes/go-fivem-api/internal/utils"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func GetHealthHandler(w http.ResponseWriter, r *http.Request) {
 	utils.RespondWithJSON(w, 200, HealthResponse{
 		Status: http.StatusText(200),
 	})
