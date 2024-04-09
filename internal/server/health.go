@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/masonschafercodes/go-fivem-api/internal/models"
-	"github.com/masonschafercodes/go-fivem-api/internal/utils"
+	utils "github.com/masonschafercodes/go-fivem-api/pkg"
 )
 
 func (s *FiveMServer) GetHealthHandler(w http.ResponseWriter, r *http.Request) {
