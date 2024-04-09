@@ -6,13 +6,28 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/masonschafercodes/go-fivem-api/internal/models"
 	"github.com/masonschafercodes/go-fivem-api/internal/server"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 func main() {
 	r := chi.NewRouter()
 
-	svr := server.NewServer(r, 3030)
+	db, err := gorm.Open(sqlite.Open("../../test.db"), &gorm.Config{})
+
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	err = db.AutoMigrate(&models.Player{})
+
+	if err != nil {
+		panic("failed to migrate Player model")
+	}
+
+	svr := server.NewServer(r, 3030, db)
 
 	svr.Router.Use(middleware.RequestID)
 	svr.Router.Use(middleware.RealIP)
@@ -22,7 +37,7 @@ func main() {
 
 	svr.CreateRoutes()
 
-	err := svr.StartServer()
+	err = svr.StartServer()
 
 	if err != nil {
 		log.Fatalf("unable to start server: %s", err.Error())
