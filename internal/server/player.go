@@ -25,7 +25,7 @@ func (s *FiveMServer) GetPlayersHandler(w http.ResponseWriter, r *http.Request) 
 	utils.RespondWithJSON(w, 200, players)
 }
 
-func (s *FiveMServer) CreateNewPlayer(w http.ResponseWriter, r *http.Request) {
+func (s *FiveMServer) CreateNewPlayerHandler(w http.ResponseWriter, r *http.Request) {
 	newPlayer := models.Player{
 		Username: "qwade",
 		License:  "qwadebot",

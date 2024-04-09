@@ -22,9 +22,18 @@ func main() {
 	}
 
 	err = db.AutoMigrate(&models.Player{})
-
 	if err != nil {
-		panic("failed to migrate Player model")
+		log.Panicf("failed to migrate model: %s", err.Error())
+	}
+
+	err = db.AutoMigrate(&models.Character{})
+	if err != nil {
+		log.Panicf("failed to migrate model: %s", err.Error())
+	}
+
+	err = db.AutoMigrate(&models.CharacterLocation{})
+	if err != nil {
+		log.Panicf("failed to migrate model: %s", err.Error())
 	}
 
 	svr := server.NewServer(r, 3030, db)

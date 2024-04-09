@@ -42,5 +42,7 @@ func (s *FiveMServer) StartServer() error {
 func (s *FiveMServer) CreateRoutes() {
 	s.Router.Get("/", s.GetHealthHandler)
 	s.Router.Get("/players", s.GetPlayersHandler)
-	s.Router.Post("/players", s.CreateNewPlayer)
+	s.Router.Post("/players", s.CreateNewPlayerHandler)
+	s.Router.Get("/characters", s.GetCharactersHandler)
+	s.Router.Post("/characters", s.CreateNewCharacterHandler)
 }
