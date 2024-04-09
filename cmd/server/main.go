@@ -6,8 +6,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/masonschafercodes/go-fivem-api/internal/models"
-	"github.com/masonschafercodes/go-fivem-api/internal/server"
+	"github.com/qw-scripts/go-fivem-api/internal/models"
+	"github.com/qw-scripts/go-fivem-api/internal/server"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )

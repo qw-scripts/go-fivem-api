@@ -1,4 +1,4 @@
-module github.com/masonschafercodes/go-fivem-api
+module github.com/qw-scripts/go-fivem-api
 
 go 1.22.2
 
