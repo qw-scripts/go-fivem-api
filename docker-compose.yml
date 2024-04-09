@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  go-fivem-api:
+    build: ./
+    ports:
+      - "3030:3030"
+    environment:
+      - PORT=3030

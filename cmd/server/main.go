@@ -2,6 +2,8 @@ package main
 
 import (
 	"log"
+	"os"
+	"strconv"
 	"time"
 
 	"github.com/go-chi/chi/v5"
@@ -36,7 +38,18 @@ func main() {
 		log.Panicf("failed to migrate model: %s", err.Error())
 	}
 
-	svr := server.NewServer(r, 3030, db)
+	portFromEnv := os.Getenv("PORT")
+
+	if portFromEnv == "" {
+		portFromEnv = "3030"
+	}
+
+	port, err := strconv.Atoi(portFromEnv)
+	if err != nil {
+		log.Panic("unable to parse server port")
+	}
+
+	svr := server.NewServer(r, port, db)
 
 	svr.Router.Use(middleware.RequestID)
 	svr.Router.Use(middleware.RealIP)
