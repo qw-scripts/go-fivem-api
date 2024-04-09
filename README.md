@@ -7,10 +7,18 @@ just for fun for now :). I don't really have any major plans for this project ye
 - [Go](https://golang.org/)
 - [Chi](https://github.com/go-chi/chi)
 - [Gorm](https://gorm.io/)
+- [Docker](https://www.docker.com/)
 
 ## Requirements (for now)
 
 - Go 1.22.2
+- Docker and Docker Compose (Optional, but recommended for development)
+
+## Running
+
+```bash
+docker compose up -d --build
+```
 
 ## Contributing
 
