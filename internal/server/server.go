@@ -6,18 +6,20 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/masonschafercodes/go-fivem-api/internal/routes/health"
 )
 
 type FiveMServer struct {
-	Router *chi.Mux
-	Port   int
+	Router    *chi.Mux
+	Port      int
+	StartTime time.Time
 }
 
 func NewServer(router *chi.Mux, port int) *FiveMServer {
+	startTime := time.Now()
 	return &FiveMServer{
-		Router: router,
-		Port:   port,
+		Router:    router,
+		Port:      port,
+		StartTime: startTime,
 	}
 }
 
@@ -35,5 +37,5 @@ func (s *FiveMServer) StartServer() error {
 }
 
 func (s *FiveMServer) CreateRoutes() {
-	s.Router.Get("/", health.GetHealthHandler)
+	s.Router.Get("/", s.GetHealthHandler)
 }
